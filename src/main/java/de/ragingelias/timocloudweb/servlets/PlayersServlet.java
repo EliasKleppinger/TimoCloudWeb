@@ -11,14 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cloud.timo.TimoCloud.api.TimoCloudAPI;
 import cloud.timo.TimoCloud.api.objects.PlayerObject;
-import cloud.timo.TimoCloud.api.objects.ServerGroupObject;
-import cloud.timo.TimoCloud.api.objects.ServerObject;
 import cloud.timo.TimoCloud.core.TimoCloudCore;
-import cloud.timo.TimoCloud.core.objects.Base;
-import cloud.timo.TimoCloud.core.objects.Server;
-import cloud.timo.TimoCloud.core.objects.ServerGroup;
+import cloud.timo.TimoCloud.core.objects.Proxy;
+import cloud.timo.TimoCloud.core.objects.ProxyGroup;
 import de.ragingelias.timocloudweb.TimoCloudWeb;
 
 /**
@@ -38,9 +34,9 @@ public class PlayersServlet extends HttpServlet {
 		Object o = session.getAttribute("authed");
 		if((o instanceof Boolean) && ((boolean) o)) {
 			String builder = "";
-			for(ServerGroup group : TimoCloudCore.getInstance().getInstanceManager().getServerGroups()) {
-				for(Server server : group.getServers()) {
-					for(PlayerObject player : server.getOnlinePlayers()) {
+			for(ProxyGroup group : TimoCloudCore.getInstance().getInstanceManager().getProxyGroups()) {
+				for(Proxy proxy : group.getProxies()) {
+					for(PlayerObject player : proxy.getOnlinePlayers()) {
 						builder += "<div class='group'><p>Name: " + player.getName() + "</p>" + "<p>Server: " + player.getServer().getName()
 						+ "</p>" + "<p>Online: " +player.isOnline() + "%</p>" + "<p>Host: "
 						+ player.getIpAddress().getHostAddress() + "</p>" 

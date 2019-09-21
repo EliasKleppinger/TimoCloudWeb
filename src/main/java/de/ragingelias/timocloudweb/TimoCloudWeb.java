@@ -4,6 +4,7 @@
 package de.ragingelias.timocloudweb;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Base64;
 
 import org.eclipse.jetty.server.Server;
@@ -12,6 +13,9 @@ import org.eclipse.jetty.server.session.HashSessionManager;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.eclipse.jetty.servlet.ServletHandler;
 
+import cloud.timo.TimoCloud.api.TimoCloudAPI;
+import cloud.timo.TimoCloud.api.core.commands.CommandHandler;
+import cloud.timo.TimoCloud.api.core.commands.CommandSender;
 import cloud.timo.TimoCloud.api.plugins.TimoCloudPlugin;
 import de.ragingelias.timocloudweb.servlets.BasesServlet;
 import de.ragingelias.timocloudweb.servlets.GroupsServlet;
@@ -36,6 +40,28 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 	@Override
 	public void onLoad() {
 		try {
+			TimoCloudAPI.getCoreAPI().registerCommandHandler(new CommandHandler() {
+				
+				@Override
+				public void onCommand(String cmd, CommandSender cs, String... args) {
+					if(args.length == 2) {
+						String user = args[0];
+						String pass = args[1];
+						try {
+							Configuration conf = confProv.load(configFile);
+							conf.set("users." + user, pass);
+							confProv.save(conf, configFile);
+							cs.sendMessage("Der Benutzer " + user + " wurde erstellt/geändert!");
+						} catch (IOException e) {
+							cs.sendError("Ein Fehler trat auf: " + e.getMessage());
+							e.printStackTrace();
+						}
+					} else {
+						cs.sendMessage("Bitte gebe einen Namen und ein Passwort an!");
+					}
+					
+				}
+			}, "login", "user");
 			if(!configFile.exists()) {
 				configFile.createNewFile();
 				Configuration conf = confProv.load(configFile);

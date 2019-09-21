@@ -1,4 +1,4 @@
-## Wichtige Information: Der HTML/CSS Code stammt von https://github.com/DerSnatch/IotusCloud
+## Wichtige Information: Der HTML/CSS Code stammt von Lennart Heinrich
 
 ### Features
 

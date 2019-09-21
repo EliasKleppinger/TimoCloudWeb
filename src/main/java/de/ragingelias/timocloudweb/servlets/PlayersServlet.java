@@ -17,6 +17,8 @@ import cloud.timo.TimoCloud.api.objects.ServerGroupObject;
 import cloud.timo.TimoCloud.api.objects.ServerObject;
 import cloud.timo.TimoCloud.core.TimoCloudCore;
 import cloud.timo.TimoCloud.core.objects.Base;
+import cloud.timo.TimoCloud.core.objects.Server;
+import cloud.timo.TimoCloud.core.objects.ServerGroup;
 import de.ragingelias.timocloudweb.TimoCloudWeb;
 
 /**
@@ -36,8 +38,8 @@ public class PlayersServlet extends HttpServlet {
 		Object o = session.getAttribute("authed");
 		if((o instanceof Boolean) && ((boolean) o)) {
 			String builder = "";
-			for(ServerGroupObject group : TimoCloudAPI.getUniversalAPI().getServerGroups()) {
-				for(ServerObject server : group.getServers()) {
+			for(ServerGroup group : TimoCloudCore.getInstance().getInstanceManager().getServerGroups()) {
+				for(Server server : group.getServers()) {
 					for(PlayerObject player : server.getOnlinePlayers()) {
 						builder += "<div class='group'><p>Name: " + player.getName() + "</p>" + "<p>Server: " + player.getServer().getName()
 						+ "</p>" + "<p>Online: " +player.isOnline() + "%</p>" + "<p>Host: "

@@ -57,7 +57,7 @@ public class StartServlet extends HttpServlet {
 				
 			
 			resp.getWriter()
-			.println(TimoCloudWeb.navbar + "<div class='box'><h3>Willkommen, " + session.getAttribute("name") + "!</h3><h1>Server</h1></div>");
+			.println(TimoCloudWeb.navbar + "<div class='box'><h3>Willkommen, " + session.getAttribute("name") + "!</h3><h1>Server</h1> " + builder + "</div>");
 		} else {
 			resp.sendRedirect("/login");
 		}

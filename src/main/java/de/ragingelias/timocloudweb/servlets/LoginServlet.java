@@ -63,8 +63,6 @@ public class LoginServlet extends HttpServlet {
 				PrintWriter out = resp.getWriter();
 				String name = req.getParameter("name");
 				String password = req.getParameter("password");
-				System.out.println(name);
-				System.out.println(password);
 				if(conf.getString("users." + name) != null) {
 					if(password.equals(conf.getString("users." + name))) {
 						session.setAttribute("authed", true);

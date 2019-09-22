@@ -67,7 +67,6 @@ public class ProxysServlet extends HttpServlet {
 
 			} else if (req.getParameter("status") != null) {
 				String statusMessage = req.getParameter("status");
-				System.out.println(statusMessage);
 				if (statusMessage.contains("edit_success")) {
 					String builder = "";
 					for (ProxyGroupObject server : TimoCloudAPI.getUniversalAPI().getProxyGroups()) {

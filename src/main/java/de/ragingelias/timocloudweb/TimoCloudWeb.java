@@ -16,6 +16,8 @@ import org.eclipse.jetty.servlet.ServletHandler;
 import cloud.timo.TimoCloud.api.TimoCloudAPI;
 import cloud.timo.TimoCloud.api.core.commands.CommandHandler;
 import cloud.timo.TimoCloud.api.core.commands.CommandSender;
+import cloud.timo.TimoCloud.api.objects.ServerGroupObject;
+import cloud.timo.TimoCloud.api.objects.ServerObject;
 import cloud.timo.TimoCloud.api.plugins.TimoCloudPlugin;
 import de.ragingelias.timocloudweb.servlets.BasesServlet;
 import de.ragingelias.timocloudweb.servlets.GroupsServlet;
@@ -37,7 +39,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 
 	public static Server server;
 	public static ConfigurationProvider confProv = ConfigurationProvider.getProvider(YamlConfiguration.class);
-	public static File configFile = new File("/core/plugins/web.yml");
+	public static File configFile = new File("web.yml");
 	@Override
 	public void onLoad() {
 		try {
@@ -62,7 +64,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 					}
 					
 				}
-			}, "login", "user");
+			}, "login", "user", "createuser");
 			if(!configFile.exists()) {
 				configFile.createNewFile();
 				Configuration conf = confProv.load(configFile);
@@ -99,7 +101,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 	}
 	
 	
-	public static String style = "<style>@import url('https://fonts.googleapis.com/css?family=Roboto');\r\n" + 
+	public static String style = "<head><title>TimoCloud</title></head><style>@import url('https://fonts.googleapis.com/css?family=Roboto');\r\n" + 
 			"\r\n" + 
 			"\r\n" + 
 			"\r\n" + 

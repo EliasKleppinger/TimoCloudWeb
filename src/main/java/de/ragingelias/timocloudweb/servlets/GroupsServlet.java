@@ -70,9 +70,7 @@ public class GroupsServlet extends HttpServlet {
 
 			} else if (req.getParameter("status") != null) {
 				String statusMessage = req.getParameter("status");
-				System.out.println(statusMessage);
 				if (statusMessage.contains("edit_success")) {
-					System.out.println("Staut ");
 					String builder = "";
 					for (ServerGroupObject server : TimoCloudAPI.getUniversalAPI().getServerGroups()) {
 						builder += "<div class='group'><p>Name: " + server.getName() + "</p>" + "<p>RAM: " + server.getRam()
@@ -88,7 +86,6 @@ public class GroupsServlet extends HttpServlet {
 							+ "<div class='box'><h3 style='color: green;'>Die Gruppe wurde erfolgreich editiert!</h3><h2>Gruppen</h2>"
 							+ builder + "<br><br><a href='?add=true'><button>Gruppe erstellen</button></a></div>");
 				} else if (statusMessage.contains("add_success")) {
-					System.out.println("Staut ");
 					String builder = "";
 					for (ServerGroupObject server : TimoCloudAPI.getUniversalAPI().getServerGroups()) {
 						builder += "<div class='group'><p>Name: " + server.getName() + "</p>" + "<p>RAM: " + server.getRam()

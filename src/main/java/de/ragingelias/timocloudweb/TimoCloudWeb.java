@@ -37,7 +37,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 
 	public static Server server;
 	public static ConfigurationProvider confProv = ConfigurationProvider.getProvider(YamlConfiguration.class);
-	public static File configFile = new File("web.yml");
+	public static File configFile = new File("/core/plugins/web.yml");
 	@Override
 	public void onLoad() {
 		try {

@@ -37,13 +37,10 @@ public class PlayersServlet extends HttpServlet {
 			for(ProxyGroupObject group : TimoCloudAPI.getUniversalAPI().getProxyGroups()) {
 				System.out.println("Gruppe: " + group.getName());
 				for(ProxyObject proxy : group.getProxies()) {
-					System.out.println("Proxy-Name: " + proxy.getName());
-					System.out.println("Proxy-Players: " + proxy.getOnlinePlayerCount());
-					System.out.println("Proxy-Player-List-Size: " + proxy.getOnlinePlayers().size());
 					for(PlayerObject player : proxy.getOnlinePlayers()) {
 						System.out.println("Player: " + player.getName());
 						builder += "<div class='group'><p>Name: " + player.getName() + "</p>" + "<p>Server: " + player.getServer().getName()
-						+ "</p>" + "<p>Online: " +player.isOnline() + "%</p>" + "<p>Host: "
+						+ "</p>" + "<p>Online: " +player.isOnline() + "</p>" + "<p>Host: "
 						+ player.getIpAddress().getHostAddress() + "</p>" 
 						+ "</div>";
 					}

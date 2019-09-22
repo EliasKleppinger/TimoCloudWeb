@@ -22,6 +22,7 @@ import de.ragingelias.timocloudweb.servlets.GroupsServlet;
 import de.ragingelias.timocloudweb.servlets.LoginServlet;
 import de.ragingelias.timocloudweb.servlets.LogoutServlet;
 import de.ragingelias.timocloudweb.servlets.PlayersServlet;
+import de.ragingelias.timocloudweb.servlets.ProxysServlet;
 import de.ragingelias.timocloudweb.servlets.RootServlet;
 import de.ragingelias.timocloudweb.servlets.StartServlet;
 import net.md_5.bungee.config.Configuration;
@@ -85,6 +86,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 			handler.addServletWithMapping(BasesServlet.class, "/bases");
 			handler.addServletWithMapping(LogoutServlet.class, "/logout");
 			handler.addServletWithMapping(PlayersServlet.class, "/players");
+			handler.addServletWithMapping(ProxysServlet.class, "/proxys");
 			server.start();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -373,7 +375,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 			"\r\n" + 
 			"    width: 150px;\r\n" + 
 			"\r\n" + 
-			"    height: 200px;\r\n" + 
+			"    height: 240px;\r\n" + 
 			"\r\n" + 
 			"    border: 1px solid #2c8ca9;\r\n" + 
 			"\r\n" + 
@@ -485,6 +487,7 @@ public class TimoCloudWeb extends TimoCloudPlugin {
 			+ "<li class='navbar'><a href='/groups'>Gruppen</a></li>"
 			+ "<li class='navbar'><a href='/players'>Spieler</a></li>"
 			+ "<li class='navbar'><a href='/bases'>BASE's</a></li>"
+			+ "<li class='navbar'><a href='/proxys'>Proxy-Gruppen</a></li>"
 			+ "<li class='navbar'><a href='/logout'>Logout</a>"
 			+ "</li></ul>";
 

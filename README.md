@@ -1,7 +1,5 @@
 ## Wichtige Information: Der HTML/CSS Code stammt von Lennart Heinrich
 
-##Test
-
 ### Features
 
 - Konfigurierbarer Port
